@@ -1,12 +1,22 @@
 <template>
   <div class="checkbox">
     <label class="checkbox-status" for="">Bắt buộc</label>
-    <label class="toggle" for="toggle">
-      <input type="checkbox" id="toggle" />
+    <label class="toggle" :for="'toggle'+groupIndex">
+      <input type="checkbox" :id="'toggle'+groupIndex" />
       <div class="slider"></div>
     </label>
   </div>
 </template>
+<script>
+
+export default{
+  props:{
+    groupIndex:{
+      type:Number
+    }
+  }
+}
+</script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Inter');
 

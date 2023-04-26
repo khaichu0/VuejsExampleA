@@ -1,5 +1,5 @@
 <template>
-  <div class="label_content_item">
+  <div class="label_content_item"  @click="clickHandler">
     <span class="label_content">
       {{ label }}
     </span>
@@ -9,6 +9,12 @@
 export default {
   props: {
     label: String,
+  },
+  methods: {
+    clickHandler() {
+      this.$emit("add-row");
+    }
+
   },
 };
 </script>
