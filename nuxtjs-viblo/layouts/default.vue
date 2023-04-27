@@ -1,11 +1,21 @@
 <template>
   <div>
+    <header-content />
+
     <nuxt/>
   </div>
 </template>
+<script>
+import HeaderContent from "~/components/HeaderContent.vue";
+export default{
+  components: {
+    HeaderContent,
+  },
+}
 
+</script>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url("https://fonts.googleapis.com/css?family=Google+Sans");
 html {
   font-family: "Google Sans";
   font-size: 16px;

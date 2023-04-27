@@ -34,6 +34,7 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: [{ src: '~/plugins/vuetify.js' }]
 }
 

@@ -153,6 +153,7 @@
 </template>
 <script>
 import { SVG_PATH } from "../static/common.js";
+import { v4 as uuidv4 } from 'uuid'
 export default {
   data() {
     return {
@@ -164,16 +165,16 @@ export default {
       let newItem = {};
       switch (number) {
         case 1:
-          newItem = { path: "../_nuxt/assets/images/email.svg", name: "Email" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/email.svg", name: "Email" };
           break;
         case 2:
-          newItem = { path: "../_nuxt/assets/images/phone.svg", name: "Phone number" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/phone.svg", name: "Phone number" };
           break;
         case 3:
-          newItem = { path: "../_nuxt/assets/images/number.svg", name: "Number" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/number.svg", name: "Number" };
           break;
         case 4:
-          newItem = { path: "../_nuxt/assets/images/float.svg", name: "Float" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/float.svg", name: "Float" };
           break;
         case 5:
           newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
@@ -181,6 +182,7 @@ export default {
         case 6:
           newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
       }
+      console.log(newItem);
       this.$emit("add-item",newItem);
     },
   },

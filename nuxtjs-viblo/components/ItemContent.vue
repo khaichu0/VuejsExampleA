@@ -1,5 +1,5 @@
 <template>
-  <div class="item_content_item">
+  <div class="item_content_item" to="/item/item"  @click="navigateToItem">
     <div class="item_name_block">
       <div class="item_name_logo">
        <img :src="item.path" alt="" class="svg">
@@ -21,14 +21,13 @@ export default {
     item: {
       type: Object,
     },
-    color: {
-      type: String,
-      default: 'black',
-    },
   },
   watch:{
-    item(){
-      console.log(this.item);
+
+  },
+  methods: {
+    navigateToItem() {
+      this.$emit('navigate-to-item', this.item)
     }
   }
 };
@@ -81,10 +80,6 @@ export default {
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  /* identical to box height */
-
-  /* grey / 10 */
-
   color: #1d2939;
 }
 .item_function_block {
@@ -93,7 +88,6 @@ export default {
   align-items: flex-start;
   padding: 0px;
   gap: 8px;
-
   width: 148px;
   height: 44px;
 }

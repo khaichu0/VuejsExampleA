@@ -1,5 +1,7 @@
 <template>
   <section class="container">
+    <header-content />
+
 
     <div class="content">
 
@@ -30,13 +32,13 @@
       <label-content label="Thêm thành phần" @add-row="addNewGroup" />
       <button @click="saveToLocalStorage">Save to Local Storage</button>
       <button @click="loadFromLocalStorage">Load from Local Storage</button>
-      <v-btn color="primary">Click me!</v-btn>
     </div>
   </section>
 </template>
 
 <script>
 import AppLogo from "~/components/AppLogo.vue";
+import HeaderContent from "~/components/HeaderContent.vue";
 
 import LabelContent from "~/components/LabelContent.vue";
 import GroupItemContent from "~/components/GroupItemContent.vue";
@@ -47,6 +49,7 @@ export default {
     AppLogo,
     LabelContent,
     GroupItemContent,
+    HeaderContent,
   },
   data() {
     return {
@@ -110,7 +113,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 48px 432px;
   padding: 0px 0px 48px 450px;
   gap: 24px;
   position: absolute;

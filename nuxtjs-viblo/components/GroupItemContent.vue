@@ -18,6 +18,7 @@
           v-for="(item, index) in items"
           :key="index"
           :item="item"
+          @navigate-to-item="onItemClicked"
         />
       </div>
     </div>
@@ -29,6 +30,7 @@ import Navbar from "~/components/Navbar.vue";
 import Checkbox from "~/components/Checkbox.vue";
 import ItemContent from "~/components/ItemContent.vue";
 import InputCustom from "~/components/InputCustom.vue";
+import { stringify } from "querystring";
 
 export default {
   components: {
@@ -44,6 +46,7 @@ export default {
       type: Number,
       required: true,
     },
+    groupId:String,
     activeGroupIndex:{
       type:Number,
     }
@@ -55,7 +58,8 @@ export default {
       editing: false,
       inputValue: "",
       listItem: [],
-      activeGroup: null
+      activeGroup: null,
+      groupSelectedId:this.groupId
     };
   },
   methods: {
@@ -69,11 +73,13 @@ export default {
       this.$emit("add-item",newItem);
     },
     isActive(index) {
-      debugger
       return this.activeGroup === null || this.activeGroup === index;
     },
     selectGroup(index) {
       this.$emit('selectGroup', index);
+    },
+    onItemClicked(item) {
+      this.$router.push({ name: "item-id", params: { id: item.id ,group_id:this.groupId },query:{group_id:this.groupId} });
     },
   },
   watch: {
