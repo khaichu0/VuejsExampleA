@@ -165,24 +165,24 @@ export default {
       let newItem = {};
       switch (number) {
         case 1:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/email.svg", name: "Email" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/email.svg", name: "Email",type:1,title:"Email",subtitle:"",description:"In this example, we use v-slot to assign content to the header ",property:{},is_create:true };
           break;
         case 2:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/phone.svg", name: "Phone number" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/phone.svg", name: "Phone",type:2 ,title:"Phone Number",subtitle:"",description:"In this example, we use v-slot to assign content to the header ",property:{}};
           break;
         case 3:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/number.svg", name: "Number" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/number.svg", name: "Number",type:3 };
           break;
         case 4:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/float.svg", name: "Float" };
+          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/float.svg", name: "Float",type:4 };
           break;
         case 5:
           newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
           break;
         case 6:
           newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
+
       }
-      console.log(newItem);
       this.$emit("add-item",newItem);
     },
   },

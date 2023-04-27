@@ -30,7 +30,7 @@
       <label-content label="Thêm thành phần" @add-row="addNewGroup" />
       <button @click="saveToLocalStorage">Save to Local Storage</button>
       <button @click="loadFromLocalStorage">Load from Local Storage</button>
-      <v-btn color="primary">Click me!</v-btn>
+      <!-- <v-btn color="primary">Click me!</v-btn> -->
     </div>
   </section>
 </template>
@@ -65,7 +65,8 @@ export default {
   },
   methods: {
     addItemToGroup(index, newItem) {
-      this.groups[index].items.push(newItem);
+      // this.groups[index].items.push(newItem);
+      this.$router.push({ name: "item-id", params: { id: newItem.id ,group_item:newItem,group_index:index } });
     },
 
     addNewGroup() {

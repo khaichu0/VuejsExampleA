@@ -6,7 +6,7 @@
         <div class="item_content_header_title">
           <label v-if="!editing" @click="startEditing">{{ labelText }}</label>
 
-          <input-custom v-show="editing" type="text" @blur="stopEditing" />
+          <!-- <input-custom v-show="editing" type="text" @blur="stopEditing" /> -->
         </div>
         <div class="item_content_header_function">
           <checkbox :groupIndex="groupIndex" />
@@ -29,15 +29,14 @@ import ItemContentFunction from "~/components/ItemContentFunction.vue";
 import Navbar from "~/components/Navbar.vue";
 import Checkbox from "~/components/Checkbox.vue";
 import ItemContent from "~/components/ItemContent.vue";
-import InputCustom from "~/components/InputCustom.vue";
+// import InputCustom from "~/components/InputCustom.vue";
 import { stringify } from "querystring";
-
 export default {
   components: {
     ItemContent,
     ItemContentFunction,
     Checkbox,
-    InputCustom,
+    // InputCustom,
     Navbar,
   },
   props: {
@@ -79,7 +78,7 @@ export default {
       this.$emit('selectGroup', index);
     },
     onItemClicked(item) {
-      this.$router.push({ name: "item-id", params: { id: item.id ,group_id:this.groupId },query:{group_id:this.groupId} });
+      this.$router.push({ name: "item-id", params: { id: item.id ,group_item:item,group_index:this.groupIndex} });
     },
   },
   watch: {
@@ -103,7 +102,6 @@ export default {
     },
     activeGroupIndex(newValue){
       console.log("🚀 ~ file: GroupItemContent.vue:99 ~ activeGroupIndex ~ newValue:", activeGroupIndex)
-
     }
   },
 };
@@ -120,20 +118,14 @@ export default {
   cursor: pointer;
   width: 1055px;
   min-height: 100px;
-
   /* Blue / 01 */
-
   background: #f5faff;
   /* Blue / 07 */
-
   border: 2px solid #2e90fa;
   /* s1 vnform */
-
   box-shadow: 0px 2px 60px rgba(0, 55, 95, 0.07);
   border-radius: 8px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   align-self: stretch;
@@ -148,7 +140,6 @@ export default {
   gap: 8px;
   width: 1055px;
   height: 68px;
-
   background: #2e90fa;
   border-radius: 8px 8px 0px 0px;
 }
@@ -172,7 +163,6 @@ export default {
   align-items: flex-start;
   padding: 0px;
   gap: 8px;
-
   height: 44px;
 }
 </style>
