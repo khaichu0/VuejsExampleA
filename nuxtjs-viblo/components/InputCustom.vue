@@ -63,7 +63,6 @@ $gray: #9b9b9b;
 $black: #000;
 .form__group {
   position: relative;
-  // width: 50%;
 }
 
 .form__field {
@@ -75,26 +74,7 @@ $black: #000;
   font-size: 1rem;
   font-weight: bold;
   min-width: 300px;
-  // // padding: 7px 0;
-  // border-bottom: 1px solid black;
   background: transparent;
-  // transition: border-color 0.2s;
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &:placeholder-shown ~ .form__label {
-    font-size: 1.3rem;
-    cursor: text;
-    top: 20px;
-  }
 }
 
-.form__field {
-  &:required,
-  &:invalid {
-    box-shadow: none;
-  }
-}
 </style>

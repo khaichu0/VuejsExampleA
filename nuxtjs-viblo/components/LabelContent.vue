@@ -19,7 +19,8 @@ export default {
 };
 </script>
 <style scoped>
-@import url('https://fonts.cdnfonts.com/css/google-sans');
+@import url("https://fonts.googleapis.com/css?family=Google+Sans");
+
 .label_content_item {
   box-sizing: border-box;
 
@@ -44,7 +45,7 @@ export default {
 
 }
 .label_content {
-  font-family: "Product Sans";
+  font-family: "Google Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;

@@ -1,12 +1,12 @@
 <template>
-  <div class="item_content_item" to="/item/item"  @click="navigateToItem">
-    <div class="item_name_block">
-      <div class="item_name_logo">
+  <div class="item_content_item"  >
+    <div class="item_name_block"  @click="navigateToItem">
+      <div class="item_name_logo" >
        <img :src="item.path" alt="" class="svg">
       </div>
       <label class="item_name">{{item.name}}</label>
     </div>
-    <item-content-function/>
+    <item-content-function @delete-item="deleteItem" />
   </div>
 </template>
 <script>
@@ -21,6 +21,9 @@ export default {
     item: {
       type: Object,
     },
+    active:{
+      type:Boolean
+    }
   },
   watch:{
 
@@ -28,6 +31,10 @@ export default {
   methods: {
     navigateToItem() {
       this.$emit('navigate-to-item', this.item)
+    },
+    deleteItem(){
+      this.$emit('delete-item', this.item)
+
     }
   }
 };
@@ -55,8 +62,13 @@ export default {
   background: #ffffff;
   /* Blue / 06 */
 
-  border: 1px solid #53b1fd;
+  border: 2px solid #c1c4c6;
+
   border-radius: 4px;
+}
+.active{
+  border: 1px solid #53b1fd;
+
 }
 .item_name_block {
   display: flex;

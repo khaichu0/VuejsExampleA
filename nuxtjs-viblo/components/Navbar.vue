@@ -153,7 +153,7 @@
 </template>
 <script>
 import { SVG_PATH } from "../static/common.js";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 export default {
   data() {
     return {
@@ -165,25 +165,75 @@ export default {
       let newItem = {};
       switch (number) {
         case 1:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/email.svg", name: "Email",type:1,title:"Email",subtitle:"",description:"In this example, we use v-slot to assign content to the header ",property:{},is_create:true };
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/email.svg",
+            name: "Email",
+            type: 1,
+            title: "Email",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            property: {},
+            is_create: true,
+          };
           break;
         case 2:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/phone.svg", name: "Phone",type:2 ,title:"Phone Number",subtitle:"",description:"In this example, we use v-slot to assign content to the header ",property:{}};
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/phone.svg",
+            name: "Phone",
+            type: 2,
+            title: "Phone Number",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            property: {},
+            is_create: true,
+          };
           break;
         case 3:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/number.svg", name: "Number",type:3 };
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/timeline.svg",
+            name: "Number",
+            type: 3,
+            title: "Number",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            validate: {
+              max_value: 5,
+              min_value: 0,
+            },
+            properties: {
+              step: 1,
+            },
+            is_create: true,
+          };
           break;
         case 4:
-          newItem = {id:uuidv4(), path: "../_nuxt/assets/images/float.svg", name: "Float",type:4 };
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/float.svg",
+            name: "Float",
+            type: 4,
+            title: "Float",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            property: {},
+            is_create: true,
+          };
           break;
         case 5:
           newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
           break;
         case 6:
           newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
-
       }
-      this.$emit("add-item",newItem);
+      this.$emit("add-item", newItem);
     },
   },
 };

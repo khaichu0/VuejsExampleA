@@ -1,55 +1,55 @@
 <template>
-  <div class="phone-detail">
-    <div class="phone-detail-navbar">
+  <div class="number-detail">
+    <div class="number-detail-navbar">
 
-      <div class="phone-detail-navbar-block">
+      <div class="number-detail-navbar-block">
 
-<div class="phone-detail-navbar-title">Chỉnh sửa {{ phoneItem.title }}</div>
-<div class="phone-detail-navbar-line"></div>
+<div class="number-detail-navbar-title">Chỉnh sửa {{ numberItem.title }}</div>
+<div class="number-detail-navbar-line"></div>
 
-<div class="phone-detail-navbar-content-title-block">
-    <div class="phone-detail-navbar-content-title">Tiêu đề</div>
-    <div class="phone-detail-navbar-content-input">
-        <input type="text" width="100%" v-model="phoneItem.name"  class="form__field ">
+<div class="number-detail-navbar-content-title-block">
+    <div class="number-detail-navbar-content-title">Tiêu đề</div>
+    <div class="number-detail-navbar-content-input">
+        <input type="text" width="100%" v-model="numberItem.name"  class="form__field ">
     </div>
 
 </div>
-<div class="phone-detail-navbar-content-description-block">
-    <div class="phone-detail-navbar-content-title">Mô tả</div>
-    <div class="phone-detail-navbar-description-input">
-        <textarea name="" id="" cols="30" rows="6" class="form__field "
-            v-model="phoneItem.description"></textarea>
+<div class="number-detail-navbar-content-description-block">
+    <div class="number-detail-navbar-content-title">Mô tả</div>
+    <div class="number-detail-navbar-description-input">
+        <textarea name="" id="" cols="30" rows="6" style="width: 100%;" class="form__field "
+            v-model="numberItem.description"></textarea>
     </div>
 
 </div>
-<div class="phone-detail-navbar-content-status-block">
-    <div class="phone-detail-navbar-content-title">Bắt buộc</div>
-    <div class="phone-detail-navbar-status-input"></div>
+<div class="number-detail-navbar-content-status-block">
+    <div class="number-detail-navbar-content-title">Bắt buộc</div>
+    <div class="number-detail-navbar-status-input"></div>
 
 </div>
-<div class="phone-detail-navbar-content-status-block">
-    <div class="phone-detail-navbar-content-title">Xác thực OTP</div>
-    <div class="phone-detail-navbar-status-input"></div>
+<div class="number-detail-navbar-content-status-block">
+    <div class="number-detail-navbar-content-title">Xác thực OTP</div>
+    <div class="number-detail-navbar-status-input"></div>
 
 </div>
-<div class="phone-detail-navbar-line-2"></div>
-<div class="phone-detail-navbar-footer-block">
-    <div class="phone-detail-navbar-cancel-btn" @click="goBack">Hủy</div>
-    <div class="phone-detail-navbar-save-btn" @click="save">Lưu chỉnh sửa</div>
+<div class="number-detail-navbar-line-2"></div>
+<div class="number-detail-navbar-footer-block">
+    <div class="number-detail-navbar-cancel-btn" @click="goBack">Hủy</div>
+    <div class="number-detail-navbar-save-btn" @click="save">Lưu chỉnh sửa</div>
 
 </div>
 
 
 </div>
     </div>
-      <div class="phone-detail-form-block">
-          <div class="phone-detail-form-content-block">
-              <div class="phone-detail-form-content-center-block">
-                  <div class="phone-detail-form-content-center-title-block">
-                      <div class="phone-detail-form-content-center-title">{{ phoneItem.name }}</div>
-                      <div class="phone-detail-form-content-center-description">{{ phoneItem.description }}</div>
+      <div class="number-detail-form-block">
+          <div class="number-detail-form-content-block">
+              <div class="number-detail-form-content-center-block">
+                  <div class="number-detail-form-content-center-title-block">
+                      <div class="number-detail-form-content-center-title">{{ numberItem.name }}</div>
+                      <div class="number-detail-form-content-center-description">{{ numberItem.description }}</div>
                   </div>
-                  <div class="phone-detail-form-content-center-input-block"></div>
+                  <div class="number-detail-form-content-center-input-block"></div>
 
               </div>
           </div>
@@ -70,14 +70,15 @@ export default {
   data() {
       return {
           groups: [],
-          phoneItem: this.item,
+          numberItem: this.item,
           activeGroupIndex: null,
       };
   },
   mounted() {
+
       if (this.item.is_create == true) {
-          this.phoneItem = this.item;
-          // this.phoneItem.is_create=false;
+          this.numberItem = this.item;
+          // this.numberItem.is_create=false;
           this.loadFromLocalStorage();
 
 
@@ -93,10 +94,9 @@ export default {
           this.$router.go(-1);
       },
       create() {
-          debugger
-          this.phoneItem.is_create = false;
+          this.numberItem.is_create = false;
           console.log(this.groups[this.groupIndex]);
-          this.groups[this.groupIndex].items.push(this.phoneItem);
+          this.groups[this.groupIndex].items.push(this.numberItem);
 
       },
       update() {
@@ -107,13 +107,13 @@ export default {
               a[this.groupIndex].items.forEach(element => {
                   if (element.id == b) {
                       console.log(element);
-                      element = this.phoneItem;
+                      element = this.numberItem;
                   }
       });
 
       },
       save() {
-          if (this.phoneItem.is_create == true) {
+          if (this.numberItem.is_create == true) {
               this.create();
           } else {
               this.update();
@@ -128,6 +128,7 @@ export default {
 
 
           }
+
       },
       findItem(){
           const a = this.groups.filter(row => {
@@ -138,7 +139,7 @@ export default {
                   a[i].items.forEach(element => {
                       if (element.id == b) {
                           console.log(element);
-                          this.phoneItem = element;
+                          this.numberItem = element;
                       }
                   });
               }
@@ -148,7 +149,7 @@ export default {
 
 </script>
 <style scoped>
-.phone-detail {
+.number-detail {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -158,7 +159,7 @@ export default {
   left: 0px;
   top: 120px;
   }
-  .phone-detail-navbar{
+  .number-detail-navbar{
     box-sizing: border-box;
 
   /* Auto layout */
@@ -183,7 +184,7 @@ export default {
   order: 0;
   flex-grow: 0;
   }
-  .phone-detail-navbar-block {
+  .number-detail-navbar-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -200,7 +201,7 @@ export default {
     flex-grow: 1;
   }
 
-  .phone-detail-navbar-title {
+  .number-detail-navbar-title {
     width: 273px;
     height: 29px;
 
@@ -210,7 +211,7 @@ export default {
     font-size: 24px;
     line-height: 29px;
     /* identical to box height */
-    white-space: nowrap;
+
     /* text-align: center; */
 
     /* grey / 10 */
@@ -224,7 +225,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-line {
+  .number-detail-navbar-line {
     width: 400px;
     height: 0px;
 
@@ -240,7 +241,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-line-2 {
+  .number-detail-navbar-line-2 {
     width: 400px;
     height: 0px;
 
@@ -256,7 +257,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-content-title-block {
+  .number-detail-navbar-content-title-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -274,7 +275,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-content-title {
+  .number-detail-navbar-content-title {
     width: 65px;
     height: 22px;
 
@@ -299,7 +300,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-content-input {
+  .number-detail-navbar-content-input {
     box-sizing: border-box;
 
     /* Auto layout */
@@ -327,7 +328,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-content-description-block {
+  .number-detail-navbar-content-description-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -344,7 +345,7 @@ export default {
     align-self: stretch;
     flex-grow: 0;
   }
-  .phone-detail-navbar-description-input {
+  .number-detail-navbar-description-input {
     box-sizing: border-box;
 
     /* Auto layout */
@@ -370,7 +371,7 @@ export default {
     align-self: stretch;
     flex-grow: 0;
   }
-  .phone-detail-navbar-content-status-block {
+  .number-detail-navbar-content-status-block {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -389,7 +390,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-footer-block {
+  .number-detail-navbar-footer-block {
     /* Auto layout */
     display: flex;
     flex-direction: row;
@@ -408,7 +409,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-navbar-cancel-btn {
+  .number-detail-navbar-cancel-btn {
     box-sizing: border-box;
 
     /* Auto layout */
@@ -435,7 +436,7 @@ export default {
     flex-grow: 1;
   }
 
-  .phone-detail-navbar-save-btn {
+  .number-detail-navbar-save-btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -459,7 +460,7 @@ export default {
     flex-grow: 1;
   }
 
-  .phone-detail-form-block {
+  .number-detail-form-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -477,7 +478,7 @@ export default {
     flex-grow: 1;
   }
 
-  .phone-detail-form-content-block {
+  .number-detail-form-content-block {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -498,7 +499,7 @@ export default {
     flex-grow: 1;
   }
 
-  .phone-detail-form-content-center-block {
+  .number-detail-form-content-center-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -516,7 +517,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-form-content-center-title-block {
+  .number-detail-form-content-center-title-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -533,7 +534,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-form-content-center-title {
+  .number-detail-form-content-center-title {
     width: 114px;
     height: 22px;
 
@@ -558,7 +559,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-form-content-center-description {
+  .number-detail-form-content-center-description {
     width: 100%;
     height: 21px;
 
@@ -581,7 +582,7 @@ export default {
     flex-grow: 0;
   }
 
-  .phone-detail-form-content-center-input-block {
+  .number-detail-form-content-center-input-block {
     box-sizing: border-box;
 
     /* Auto layout */
@@ -620,11 +621,11 @@ export default {
     background: transparent;
     transition: border-color 0.2s;
   }
-  .phone-detail-navbar::-webkit-scrollbar {
+  .number-navbar-detail::-webkit-scrollbar {
       width: 6px;
       background-color: #fdf8f8;
   }
-  .phone-detail-navbar::-webkit-scrollbar-thumb {
+  .number-navbar-detail::-webkit-scrollbar-thumb {
       background-color: #6b6a6a;
       border-radius: 2px;
   }

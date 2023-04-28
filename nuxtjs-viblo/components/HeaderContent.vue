@@ -130,12 +130,11 @@
   align-items: flex-start;
   padding: 0px;
 
-  position: sticky;
+  position: absolute;
   width: 100%;
   height: 120px;
   left: 0px;
   top: 0px;
-
   background: #ffffff;
   /* s1 vnform */
 
