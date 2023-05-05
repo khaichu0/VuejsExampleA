@@ -15,11 +15,14 @@
           :items="group.items"
           :group-index="index"
           :active="index === activeGroup"
+          :isRequired="group.isRequired"
+          @changeRequired="handleGroupChangeRequired"
           @add-item="addItemToGroup(index, $event)"
           @delete-item="deleteItem"
           @delete-group="deleteGroup"
           @update-group="updateGroup"
           @activate="activateGroup(index)"
+
         />
       </div>
       <label-content label="Thêm thành phần" @add-row="addNewGroup" />
@@ -53,6 +56,7 @@ export default {
         // },
       ],
       activeGroup: null,
+
     };
   },
   mounted() {
@@ -61,6 +65,7 @@ export default {
   methods: {
     addItemToGroup(index, newItem) {
       // this.groups[index].items.push(newItem);
+      // debugger
       this.$router.push({
         name: "item-id",
         params: { id: newItem.id, group_item: newItem, group_index: index },
@@ -71,6 +76,7 @@ export default {
       const newGroup = {
         id: uuidv4(),
         title: "New Group",
+        required:false,
         items: [],
       };
       this.groups.push(newGroup);
@@ -107,6 +113,10 @@ export default {
     updateGroup(groupIndex, title) {
       this.groups[groupIndex].title = title;
       this.saveToLocalStorage();
+    },
+    handleGroupChangeRequired(groupIndex,groupRequired){
+      this.groups[groupIndex].required=groupRequired;
+      console.log(this.groups[groupIndex]);
     },
   },
 };

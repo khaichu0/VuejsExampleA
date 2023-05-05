@@ -1,8 +1,8 @@
 <template>
   <div>
     <Transition name="slide-fade">
-    <navbar @add-item="addItem" ref="child" v-show="active" />
-  </Transition>
+      <navbar @add-item="addItem" ref="child" v-show="active" />
+    </Transition>
     <div class="group_item_content_item">
       <div
         class="header_group_content"
@@ -10,7 +10,7 @@
         @click="handleClick"
       >
         <div class="item_content_header_title">
-          <label v-if="!editing" @click="startEditing">{{ labelText }}</label>
+          <label v-if="!editing || group_title==null" @click="startEditing">{{ labelText }}</label>
 
           <!-- <input-custom v-show="editing" type="text" @blur="stopEditing" /> -->
           <input
@@ -19,11 +19,18 @@
             class="form__field"
             type="text"
             width="100%"
-            v-model="this.group_title"
+            v-model="group_title"
           />
         </div>
         <div class="item_content_header_function">
-          <checkbox :group-index="groupIndex" />
+          <!-- <checkbox :group-index="groupIndex" v-model="requiredGroup" @change="handleChangeRequiredGroup(groupIndex)"/> -->
+          <div class="checkbox">
+            <label class="checkbox-status" for="">Bắt buộc</label>
+            <label class="toggle" :for="'toggle' + groupIndex">
+              <input type="checkbox" :id="'toggle' + groupIndex"  v-model="requiredGroup" @change="handleChangeRequiredGroup(groupIndex)" />
+              <div class="slider"></div>
+            </label>
+          </div>
           <div class="item_function exstra_item">
             <svg
               width="44"
@@ -53,7 +60,10 @@
             </svg>
           </div>
 
-          <div class="item_function delete_item" @click="deleteGroup(groupIndex)">
+          <div
+            class="item_function delete_item"
+            @click="deleteGroup(groupIndex)"
+          >
             <svg
               width="44"
               height="44"
@@ -77,7 +87,7 @@
           :group-index="groupIndex"
           :item-index="groupIndex"
           :active="active"
-          @delete-item="deleteItem(groupIndex,index)"
+          @delete-item="deleteItem(groupIndex, index)"
           @navigate-to-item="onItemClicked"
         />
       </div>
@@ -90,7 +100,6 @@ import Navbar from "~/components/Navbar.vue";
 import Checkbox from "~/components/Checkbox.vue";
 import ItemContent from "~/components/ItemContent.vue";
 import InputCustom from "~/components/InputCustom.vue";
-import { stringify } from "querystring";
 export default {
   components: {
     ItemContent,
@@ -106,8 +115,7 @@ export default {
       required: true,
     },
     groupId: String,
-    groupTitle: String,
-
+    groupTitle:String,
     active: {
       type: Boolean,
       required: true,
@@ -116,9 +124,12 @@ export default {
   data() {
     return {
       editing: false,
-      labelText:"Text something here",
+      labelText: "Text something here",
       activeGroup: null,
       group_title: this.groupTitle,
+      requiredGroup: false,
+      // groupTitle:{type:String,de} ,
+
     };
   },
   methods: {
@@ -127,7 +138,8 @@ export default {
     },
     stopEditing() {
       this.editing = false;
-      this.updateGroup(this.groupIndex,this.group_title)
+      this.labelText=this.group_title;
+      this.updateGroup(this.groupIndex, this.group_title);
     },
     addItem(newItem) {
       this.$emit("add-item", newItem);
@@ -145,18 +157,21 @@ export default {
       this.$emit("activate");
     },
 
-    deleteGroup(groupIndex){
+    deleteGroup(groupIndex) {
       this.$emit("delete-group", groupIndex);
+    },
+    updateGroup(groupIndex, string) {
+      this.$emit("update-group", groupIndex, string);
+    },
+    deleteItem(groupIndex, index) {
+      this.$emit("delete-item", groupIndex, index);
+    },
+
+    handleChangeRequiredGroup(groupIndex) {
+
+      this.$emit("changeRequired", groupIndex, this.requiredGroup);
 
     },
-    updateGroup(groupIndex,string){
-      this.$emit("update-group", groupIndex,string);
-
-    },
-    deleteItem(groupIndex,index){
-      this.$emit("delete-item", groupIndex,index);
-
-    }
   },
   watch: {
     value(newValue) {
@@ -185,6 +200,7 @@ export default {
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Inter");
+@import url("../assets/css/checkbox/checkbox.css");
 .group_item_content_item {
   /* Auto layout */
   display: flex;
@@ -226,7 +242,6 @@ export default {
   background: #2e90fa;
   color: #f5faff;
   border: 2px solid #2e90fa;
-
 }
 .item_content_header_title {
   width: 46px;
@@ -257,7 +272,7 @@ export default {
   font-size: 1rem;
   font-weight: bold;
   min-width: 300px;
-  padding: 7px 0;
+  /* padding: 7px 0; */
   background: transparent;
   transition: border-color 0.2s;
 }
@@ -273,5 +288,8 @@ export default {
 .slide-fade-leave-to {
   transform: translateY(-20px);
   opacity: 0;
+}
+.active .item_function svg{
+  filter: invert(100%)
 }
 </style>

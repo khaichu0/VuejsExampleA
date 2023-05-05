@@ -169,13 +169,11 @@ export default {
   align-items: flex-start;
   padding: 20px 16px 20px 20px;
   gap: 24px;
-
   width: 468px;
   height: calc(100vh - 120px);
 
   background: #ffffff;
   /* grey / 05 */
-
   border-right: 1px solid #d0d5dd;
 
   /* Inside auto layout */

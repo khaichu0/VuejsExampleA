@@ -28,12 +28,12 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(5)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/paragrap.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(6)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/calendar.svg" alt="" />
         </div>
@@ -41,12 +41,12 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(7)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/calendar-time.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(8)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/credit-card.svg" alt="" />
         </div>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(9)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/file.svg" alt="" />
         </div>
@@ -65,12 +65,12 @@
     </div>
     <div class="line"></div>
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(10)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/sort.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(11)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/todo-list.svg" alt="" />
         </div>
@@ -78,12 +78,12 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(12)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/checkbox.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(13)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/record.svg" alt="" />
         </div>
@@ -91,12 +91,12 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(14)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/timeline.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(15)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/location.svg" alt="" />
         </div>
@@ -104,12 +104,12 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(16)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/compact-square.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(17)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/compact-cicle.svg" alt="" />
         </div>
@@ -117,7 +117,7 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(18)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/ratting.svg" alt="" />
         </div>
@@ -125,12 +125,12 @@
     </div>
     <div class="line"></div>
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(19)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/heading.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(20)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/quote.svg" alt="" />
         </div>
@@ -138,12 +138,12 @@
     </div>
 
     <div class="navbar_row">
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(21)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/image-file.svg" alt="" />
         </div>
       </div>
-      <div class="navbar_icon_block">
+      <div class="navbar_icon_block" @click="clickHandler(22)">
         <div class="navbar_icon_block_item">
           <img src="../assets/images/film-file.svg" alt="" />
         </div>
@@ -174,6 +174,7 @@ export default {
             subtitle: "",
             description:
               "In this example, we use v-slot to assign content to the header ",
+            required: false,
             property: {},
             is_create: true,
           };
@@ -184,10 +185,11 @@ export default {
             path: "../_nuxt/assets/images/phone.svg",
             name: "Phone",
             type: 2,
-            title: "Phone Number",
+            title: "Số điện thoại",
             subtitle: "",
             description:
               "In this example, we use v-slot to assign content to the header ",
+            required: false,
             property: {},
             is_create: true,
           };
@@ -198,10 +200,11 @@ export default {
             path: "../_nuxt/assets/images/timeline.svg",
             name: "Number",
             type: 3,
-            title: "Number",
+            title: "Chuỗi số",
             subtitle: "",
             description:
               "In this example, we use v-slot to assign content to the header ",
+            required: false,
             required: false,
             validate: {
               max_value: 5,
@@ -219,19 +222,328 @@ export default {
             path: "../_nuxt/assets/images/float.svg",
             name: "Float",
             type: 4,
-            title: "Float",
+            title: "Chuỗi số thập phân",
             subtitle: "",
             description:
               "In this example, we use v-slot to assign content to the header ",
+            required: false,
             property: {},
             is_create: true,
           };
           break;
         case 5:
-          newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/paragrap.svg",
+            name: "Paragrap",
+            type: 5,
+            title: "Đoạn văn bản",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {
+              is_paragraph: true,
+            },
+            is_create: true,
+          };
           break;
         case 6:
-          newItem = { path: "../_nuxt/assets/images/email.svg", name: "email" };
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Calendar",
+            type: 6,
+            title: "Ngày",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 7:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "CalendarTime",
+            type: 7,
+            title: "Ngày giờ",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 8:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Credit",
+            type: 8,
+            title: "Căn cước công dân",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 9:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "File",
+            type: 9,
+            title: "Tệp đính kèm",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 10:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/sort.svg",
+            name: "SelectOption",
+            type: 10,
+            title: "Menu thả xuống",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {
+              options: [
+                {
+                  id: 1,
+                  type: "text",
+                  label: "Lựa chọn 1",
+                  value: 1,
+                },
+              ],
+            },
+            is_create: true,
+          };
+          break;
+        case 11:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Votting",
+            type: 11,
+            title: "Biểu quyết",
+            subtitle: "",
+            description:" ",
+            required: false,
+            property: {
+              options: [
+                {
+                  id: 1,
+                  type: "text",
+                  label: "Lựa chọn 1",
+                  value: 1,
+                },
+              ]
+            },
+            is_create: true,
+          };
+          break;
+        case 12:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Checkbox",
+            type: 12,
+            title: "Hộp kiểm",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {
+              "arranged": "vertical",
+            "options": [
+              {
+                "id": 1,
+                "type": "text",
+                "data": "Lựa chọn 1"
+              },
+            ]
+            },
+            is_create: true,
+          };
+          break;
+        case 13:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Radio",
+            type: 13,
+            title: "Trắc nghiệm",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 14:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Linear Range",
+            type: 14,
+            title: "Phạm vi tuyến tính",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 15:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Location",
+            type: 15,
+            title: "Địa chỉ",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 16:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Checkbox Grid",
+            type: 16,
+            title: "Lưới hộp kiểm",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 17:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Radio Grid",
+            type: 17,
+            title: "Lưới trắc nghiệm",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 18:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Ratting",
+            type: 18,
+            title: "Đánh giá",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 19:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Heading",
+            type: 19,
+            title: "Tiêu đề",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 20:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Quote",
+            type: 20,
+            title: "Trích dẫn",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 21:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Image file",
+            type: 21,
+            title: "Tệp ảnh",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 22:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Video file",
+            type: 22,
+            title: "Tệp video ",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
+        case 23:
+          newItem = {
+            id: uuidv4(),
+            path: "../_nuxt/assets/images/calendar.svg",
+            name: "Calendar",
+            type: 23,
+            title: "Calendar",
+            subtitle: "",
+            description:
+              "In this example, we use v-slot to assign content to the header ",
+            required: false,
+            property: {},
+            is_create: true,
+          };
+          break;
       }
       this.$emit("add-item", newItem);
     },

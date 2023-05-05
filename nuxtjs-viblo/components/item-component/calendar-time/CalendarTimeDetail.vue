@@ -49,7 +49,10 @@
                       <div class="detail-form-content-center-title">{{ phoneItem.name }}</div>
                       <div class="detail-form-content-center-description">{{ phoneItem.description }}</div>
                   </div>
-                  <div class="detail-form-content-center-input-block"></div>
+                  <div class="detail-form-content-center-input-block">
+        <input type="datetime-local" width="100%" v-model="phoneItem.name"  class="form__field ">
+
+                  </div>
 
               </div>
           </div>

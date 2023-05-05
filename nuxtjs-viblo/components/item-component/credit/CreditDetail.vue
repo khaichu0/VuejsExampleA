@@ -22,6 +22,7 @@
     </div>
 
 </div>
+
 <div class="detail-navbar-content-status-block">
     <div class="detail-navbar-content-title">Bắt buộc</div>
     <div class="detail-navbar-status-input"></div>
@@ -50,6 +51,18 @@
                       <div class="detail-form-content-center-description">{{ phoneItem.description }}</div>
                   </div>
                   <div class="detail-form-content-center-input-block"></div>
+                  <div>
+    <label class="file-button" for="file-input">
+      Choose a file
+    </label>
+    <input
+      id="file-input"
+      type="file"
+      style="display: none"
+      @change="handleFileUpload"
+    />
+    <p>Selected file: {{ selectedFile }}</p>
+  </div>
 
               </div>
           </div>
@@ -72,6 +85,7 @@ export default {
           groups: [],
           phoneItem: this.item,
           activeGroupIndex: null,
+          selectedFile: "",
       };
   },
   mounted() {
@@ -142,11 +156,20 @@ export default {
                       }
                   });
               }
-      }
+      },
+      handleFileUpload(event) {
+        if(event.target.files[0]!=null){
+          this.selectedFile = event.target.files[0].name;
+
+        }
+      // You can handle the file upload here
+    },
   }
 }
 
 </script>
 <style scoped>
   @import '../../../assets/css/item-style/item-style.css';
+  /* @import '../../../assets/css/table/table.css'; */
+
 </style>

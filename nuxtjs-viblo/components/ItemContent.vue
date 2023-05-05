@@ -4,7 +4,7 @@
       <div class="item_name_logo" >
        <img :src="item.path" alt="" class="svg">
       </div>
-      <label class="item_name">{{item.name}}</label>
+      <label class="item_name truncate">{{item.name}}</label>
     </div>
     <item-content-function @delete-item="deleteItem" />
   </div>
@@ -77,11 +77,11 @@ export default {
   padding: 0px;
   gap: 16px;
 
-  width: 94px;
+  width: 804px;
   height: 32px;
 }
 .item_name {
-  width: 46px;
+  width: 900px;
   height: 22px;
   clear: both;
   display: inline-block;
@@ -93,6 +93,8 @@ export default {
   font-size: 18px;
   line-height: 22px;
   color: #1d2939;
+
+
 }
 .item_function_block {
   display: flex;
@@ -105,5 +107,11 @@ export default {
 }
 .svg {
   filter: invert(1)
+}
+.truncate {
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

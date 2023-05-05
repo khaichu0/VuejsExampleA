@@ -22,6 +22,10 @@
     </div>
 
 </div>
+<button @click="addRow">Add Row</button>
+    <button @click="addColumn">Add Column</button>
+    <button @click="deleteRow">Delete Row</button>
+    <button @click="deleteColumn">Delete Column</button>
 <div class="detail-navbar-content-status-block">
     <div class="detail-navbar-content-title">Bắt buộc</div>
     <div class="detail-navbar-status-input"></div>
@@ -50,6 +54,30 @@
                       <div class="detail-form-content-center-description">{{ phoneItem.description }}</div>
                   </div>
                   <div class="detail-form-content-center-input-block"></div>
+                  <table>
+      <thead>
+        <tr>
+          <th>
+
+          </th>
+          <th v-for="(column, columnIndex) in tableColumns.slice(1)" :key="columnIndex">
+            <label>
+              {{ column.label }}
+            </label>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(row, rowIndex) in tableData" :key="rowIndex">
+          <td>
+            <p type="text" >{{ row[0] }}</p>
+          </td>
+          <td v-for="(cell, cellIndex) in row.slice(1)" :key="cellIndex" >
+            <input type="checkbox" >
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
               </div>
           </div>
@@ -72,6 +100,14 @@ export default {
           groups: [],
           phoneItem: this.item,
           activeGroupIndex: null,
+          tableColumns: [
+        {  },
+        { label: 'Cột 1' },
+
+      ],
+      tableData: [
+        ['Hàng 1',false],
+      ],
       };
   },
   mounted() {
@@ -142,11 +178,31 @@ export default {
                       }
                   });
               }
+      },
+      addRow() {
+      this.tableData.push(Array(this.tableColumns.length).fill("Hàng"+this.tableData.length));
+    },
+    addColumn() {
+      this.tableColumns.push({ label: `Column ${this.tableColumns.length}` });
+      for (let i = 0; i < this.tableData.length; i++) {
+        this.tableData[i].push(false);
       }
+    },
+    deleteRow() {
+      this.tableData.pop();
+    },
+    deleteColumn() {
+      this.tableColumns.pop();
+      for (let i = 0; i < this.tableData.length; i++) {
+        this.tableData[i].pop();
+      }
+    },
   }
 }
 
 </script>
 <style scoped>
   @import '../../../assets/css/item-style/item-style.css';
+  /* @import '../../../assets/css/table/table.css'; */
+
 </style>
