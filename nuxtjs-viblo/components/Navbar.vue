@@ -3,7 +3,7 @@
     <div class="navbar_row">
       <div class="navbar_icon_block" @click="clickHandler(1)">
         <div class="navbar_icon_block_item">
-          <img src="../assets/images/email.svg" alt="" />
+          <img src="~/assets/images/email.svg" alt="" />
           <!-- <object :data="url + 'email.svg'" type="image/svg+xml"></object> -->
         </div>
       </div>
@@ -167,7 +167,7 @@ export default {
         case 1:
           newItem = {
             id: uuidv4(),
-            path: "../_nuxt/assets/images/email.svg",
+            path: "~/assets/images/email.svg",
             name: "Email",
             type: 1,
             title: "Email",

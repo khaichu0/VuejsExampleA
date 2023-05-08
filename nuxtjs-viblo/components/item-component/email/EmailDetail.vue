@@ -1,58 +1,56 @@
 <template>
   <div class="email-detail">
     <div class="email-navbar-detail">
-
       <div class="email-detail-navbar-block">
-      <div class="email-detail-navbar-title" v-show="emailItem.is_create">
-        Tạo mới form {{ emailItem.title }}
-      </div>
-      <div class="email-detail-navbar-title" v-show="!emailItem.is_create">
-        Chỉnh sửa form {{ emailItem.title }}
-      </div>
-      <div class="email-detail-navbar-line"></div>
+        <div class="email-detail-navbar-title" v-show="emailItem.is_create">
+          Tạo mới form {{ emailItem.title }}
+        </div>
+        <div class="email-detail-navbar-title" v-show="!emailItem.is_create">
+          Chỉnh sửa form {{ emailItem.title }}
+        </div>
+        <div class="email-detail-navbar-line"></div>
 
-      <div class="email-detail-navbar-content-title-block">
-        <div class="email-detail-navbar-content-title">Tiêu đề</div>
-        <div class="email-detail-navbar-content-input">
-          <input
-            class="form__field"
-            type="text"
-            width="100%"
-            v-model="emailItem.name"
-          />
+        <div class="email-detail-navbar-content-title-block">
+          <div class="email-detail-navbar-content-title">Tiêu đề</div>
+          <div class="email-detail-navbar-content-input">
+            <input
+              class="form__field"
+              type="text"
+              width="100%"
+              v-model="emailItem.name"
+            />
+          </div>
+        </div>
+        <div class="email-detail-navbar-content-description-block">
+          <div class="email-detail-navbar-content-title">Mô tả</div>
+          <div class="email-detail-navbar-description-input">
+            <textarea
+              class="form__field"
+              name=""
+              id=""
+              cols="30"
+              rows="6"
+              v-model="emailItem.description"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="email-detail-navbar-content-status-block">
+          <div class="email-detail-navbar-content-title">Bắt buộc</div>
+          <div class="email-detail-navbar-status-input"></div>
+        </div>
+        <div class="email-detail-navbar-content-status-block">
+          <div class="email-detail-navbar-content-title">Xác thực OTP</div>
+          <div class="email-detail-navbar-status-input"></div>
+        </div>
+        <div class="email-detail-navbar-line-2"></div>
+        <div class="email-detail-navbar-footer-block">
+          <div class="email-detail-navbar-cancel-btn" @click="goBack">Hủy</div>
+          <div class="email-detail-navbar-save-btn" @click="save">
+            Lưu chỉnh sửa
+          </div>
         </div>
       </div>
-      <div class="email-detail-navbar-content-description-block">
-        <div class="email-detail-navbar-content-title">Mô tả</div>
-        <div class="email-detail-navbar-description-input">
-          <textarea
-            class="form__field"
-            name=""
-            id=""
-            cols="30"
-            rows="6"
-            v-model="emailItem.description"
-          ></textarea>
-        </div>
-      </div>
-
-
-      <div class="email-detail-navbar-content-status-block">
-        <div class="email-detail-navbar-content-title">Bắt buộc</div>
-        <div class="email-detail-navbar-status-input"></div>
-      </div>
-      <div class="email-detail-navbar-content-status-block">
-        <div class="email-detail-navbar-content-title">Xác thực OTP</div>
-        <div class="email-detail-navbar-status-input"></div>
-      </div>
-      <div class="email-detail-navbar-line-2"></div>
-      <div class="email-detail-navbar-footer-block">
-        <div class="email-detail-navbar-cancel-btn" @click="goBack">Hủy</div>
-        <div class="email-detail-navbar-save-btn" @click="save">
-          Lưu chỉnh sửa
-        </div>
-      </div>
-    </div>
     </div>
     <div class="email-detail-form-block">
       <div class="email-detail-form-content-block">
@@ -82,7 +80,7 @@ export default {
   },
   data() {
     return {
-      groups: [],
+      form: [],
       emailItem: this.item,
       activeGroupIndex: null,
     };
@@ -102,18 +100,18 @@ export default {
       this.$router.go(-1);
     },
     create() {
-      debugger
+      debugger;
       this.emailItem.is_create = false;
-      console.log(this.groups[this.groupIndex]);
-        this.groups[this.groupIndex].items.push(this.emailItem);
-
-
+      this.form.phases[this.groupIndex].items.push(this.emailItem);
     },
     update() {
-      const a = this.groups.filter((row) => {
+      const a = this.form.phases.filter((row) => {
         return row;
       });
+      debugger
+
       const b = this.item.id;
+      const c= a[this.groupIndex];
       a[this.groupIndex].items.forEach((element) => {
         if (element.id == b) {
           console.log(element);
@@ -127,17 +125,17 @@ export default {
       } else {
         this.update();
       }
-      localStorage.setItem("myObject", JSON.stringify(this.groups));
+      localStorage.setItem("myObject", JSON.stringify(this.form));
       this.goBack();
     },
     loadFromLocalStorage() {
       const savedObject = localStorage.getItem("myObject");
       if (savedObject) {
-        this.groups = JSON.parse(savedObject);
+        this.form =JSON.parse(savedObject);
       }
     },
     findItem() {
-      const a = this.groups.filter((row) => {
+      const a = this.form.phases.filter((row) => {
         return row;
       });
       const b = this.item.id;
@@ -155,39 +153,39 @@ export default {
 </script>
 <style scoped>
 .email-detail {
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 0px;
-position: absolute;
-width: 100%;
-left: 0px;
-top: 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 120px;
 }
-.email-navbar-detail{
+.email-navbar-detail {
   box-sizing: border-box;
 
-/* Auto layout */
+  /* Auto layout */
 
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 20px 16px 20px 20px;
-gap: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px 16px 20px 20px;
+  gap: 24px;
 
-width: 468px;
-height: calc(100vh - 120px);
+  width: 468px;
+  height: calc(100vh - 120px);
 
-background: #ffffff;
-/* grey / 05 */
+  background: #ffffff;
+  /* grey / 05 */
 
-border-right: 1px solid #d0d5dd;
+  border-right: 1px solid #d0d5dd;
 
-/* Inside auto layout */
-overflow: auto;
-flex: none;
-order: 0;
-flex-grow: 0;
+  /* Inside auto layout */
+  overflow: auto;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 .email-detail-navbar-block {
   display: flex;
@@ -197,7 +195,7 @@ flex-grow: 0;
   gap: 32px;
 
   width: 400px;
-  height:calc(100vh - 120px);
+  height: calc(100vh - 120px);
 
   /* Inside auto layout */
 
@@ -627,11 +625,11 @@ flex-grow: 0;
   transition: border-color 0.2s;
 }
 .email-navbar-detail::-webkit-scrollbar {
-    width: 6px;
-    background-color: #fdf8f8;
+  width: 6px;
+  background-color: #fdf8f8;
 }
 .email-navbar-detail::-webkit-scrollbar-thumb {
-    background-color: #6b6a6a;
-    border-radius: 2px;
+  background-color: #6b6a6a;
+  border-radius: 2px;
 }
 </style>

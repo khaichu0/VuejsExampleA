@@ -12,7 +12,7 @@
     <item-detail v-if="$route.params.group_item.type==1"  >
       <email-detail :item="$route.params.group_item" :group-index="$route.params.group_index"></email-detail>
     </item-detail>
-    <item-detail v-if="$route.params.group_item.type==2" >
+    <!-- <item-detail v-if="$route.params.group_item.type==2" >
       <phone-detail :item="$route.params.group_item" :group-index="$route.params.group_index"></phone-detail>
     </item-detail>
     <item-detail v-if="$route.params.group_item.type==3" >
@@ -41,7 +41,7 @@
     </item-detail>
     <item-detail v-if="$route.params.group_item.type==16" >
       <checkbox-grid-detail :item="$route.params.group_item" :group-index="$route.params.group_index"></checkbox-grid-detail>
-    </item-detail>
+    </item-detail> -->
   </div>
 </template>
 <script>

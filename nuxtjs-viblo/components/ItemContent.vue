@@ -23,6 +23,9 @@ export default {
     },
     active:{
       type:Boolean
+    },
+    itemIndex:{
+      type:Number
     }
   },
   watch:{

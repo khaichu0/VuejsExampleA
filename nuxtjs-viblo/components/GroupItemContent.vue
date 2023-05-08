@@ -85,7 +85,7 @@
           :key="index"
           :item="item"
           :group-index="groupIndex"
-          :item-index="groupIndex"
+          :item-index="index"
           :active="active"
           @delete-item="deleteItem(groupIndex, index)"
           @navigate-to-item="onItemClicked"
