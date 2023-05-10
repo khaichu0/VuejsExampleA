@@ -63,7 +63,9 @@
               {{ emailItem.description }}
             </div>
           </div>
-          <div class="email-detail-form-content-center-input-block"></div>
+          <div class="email-detail-form-content-center-input-block">
+
+          </div>
         </div>
       </div>
     </div>

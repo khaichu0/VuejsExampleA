@@ -4,7 +4,7 @@
       <div class="detail-navbar-block">
         <div class="detail-navbar-title">Chỉnh sửa {{ calendarItem.title }}</div>
         <div class="detail-navbar-line"></div>
-
+        
         <div class="detail-navbar-content-title-block">
           <div class="detail-navbar-content-title">Tiêu đề</div>
           <div class="detail-navbar-content-input">

@@ -12,6 +12,8 @@ namespace MyApiNetCore6.Data
 
         #region DbSet
         public DbSet<Book>? Books { get; set; }
+        public DbSet<Form>? Forms { get; set; }
+
         #endregion
     }
 }

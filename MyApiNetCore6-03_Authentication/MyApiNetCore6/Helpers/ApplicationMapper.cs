@@ -9,6 +9,8 @@ namespace MyApiNetCore6.Helpers
         public ApplicationMapper()
         {
             CreateMap<Book, BookModel>().ReverseMap();
+            CreateMap<Form, FormModel>().ReverseMap();
+
         }
     }
 }

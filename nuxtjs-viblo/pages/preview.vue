@@ -2,21 +2,41 @@
   <div class="detail">
     <div class="detail-form-block">
       <div class="detail-form-content-block">
-        <div class="detail-form-content-center-block"   v-for="(phase, index) in form.phases"
-          :key="index">
-          <div class="detail-form-content-center-title-block">
-            <div class="detail-form-content-center-title">
+        <div
+          class=""
+          v-for="(phase, index) in form.phases"
+          :key="index"
+          v-show="currentPhaseIndex === index"
+        >
+          <div class="">
+            <div class="">
               {{ phase.title }}
             </div>
-            <div class="detail-form-content-center-description">
+            <div class="">
               {{ phase.description }}
             </div>
           </div>
-          <input
-              type="text"
-              width="100%"
-              class="form__field"
-            />
+          <div v-for="(item, index) in phase.items" :key="index">
+            <component
+              :is="currentComponent"
+              v-bind="currentItem"
+              :item="item"
+            ></component>
+            <!-- <div class="">
+              {{ item.name }}
+            </div>
+            <div class="">
+              {{ item.description }}
+            </div>
+            <input type="text" width="100%"  /> -->
+          </div>
+        </div>
+        <div class="">
+          <div class="">
+            <button>Lưu chỉnh sửa</button>
+            <button @click="previos">Phần trước</button>
+            <button @click="next">Phần tiếp theo</button>
+          </div>
         </div>
       </div>
     </div>
@@ -24,49 +44,40 @@
 </template>
 <script>
 import { v4 as uuidv4 } from "uuid";
+import EmailFormPreview from "~/components/item-component/email/EmailFormPreview.vue";
 
 export default {
-  components: {},
+  components: {EmailFormPreview},
   props: {
-    item: Object,
     groupIndex: Number,
   },
   data() {
     return {
       form: [],
-      emailItem: this.item,
+      emailItem: null,
       activeGroupIndex: null,
+      currentPhaseIndex: 0,
+      currentItemIndex:0,
     };
   },
   mounted() {
-
-      this.loadFromLocalStorage();
-
+    this.loadFromLocalStorage();
+  },
+  computed: {
+    currentComponent() {
+      // get the type of the current item to determine which component to display
+      return `${this.currentItem.type_name}FormPreview`;
+    },
+    currentItem() {
+      // get the current item based on the current index
+      return this.form.phases[this.currentPhaseIndex].items[this.currentItemIndex];
+    },
   },
   methods: {
     goBack() {
       this.$router.go(-1);
     },
-    create() {
-      debugger;
-      this.emailItem.is_create = false;
-      this.form.phases[this.groupIndex].items.push(this.emailItem);
-    },
-    update() {
-      const a = this.form.phases.filter((row) => {
-        return row;
-      });
-      debugger
 
-      const b = this.item.id;
-      const c= a[this.groupIndex];
-      a[this.groupIndex].items.forEach((element) => {
-        if (element.id == b) {
-          console.log(element);
-          element = this.emailItem;
-        }
-      });
-    },
     save() {
       if (this.emailItem.is_create == true) {
         this.create();
@@ -79,7 +90,7 @@ export default {
     loadFromLocalStorage() {
       const savedObject = localStorage.getItem("myObject");
       if (savedObject) {
-        this.form =JSON.parse(savedObject);
+        this.form = JSON.parse(savedObject);
       }
     },
     findItem() {
@@ -94,6 +105,16 @@ export default {
             this.emailItem = element;
           }
         });
+      }
+    },
+    next() {
+      if (this.currentPhaseIndex < this.form.phases.length - 1) {
+        this.currentPhaseIndex++;
+      }
+    },
+    previos() {
+      if (this.currentPhaseIndex > 0) {
+        this.currentPhaseIndex--;
       }
     },
   },

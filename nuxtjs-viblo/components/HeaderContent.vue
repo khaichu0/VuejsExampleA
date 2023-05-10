@@ -67,7 +67,7 @@
           </div>
           <div class="header_logic_title">Logic</div>
         </div>
-        <div class="header_preview_block">
+        <div class="header_preview_block" @click="goToPreview">
           <div class="header_preview_item">
             <svg
               width="24"
@@ -122,6 +122,18 @@
     <div class="header_topbar"></div>
   </div>
 </template>
+<script>
+export default{
+  methods:{
+    goToPreview(){
+      this.$router.push({
+        name: "preview",
+      });
+    }
+  }
+}
+
+</script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Google+Sans");
 .header {

@@ -4,16 +4,9 @@
   align-items: flex-start;
   padding: 60px 20%;
   gap: 10px;
-
+  padding-top: 150px;
   width: 1400px;
   height: calc(100vh - 120px);
-
-  /* Inside auto layout */
-
-  /* flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1; */
 }
 
 .detail-form-content-block {

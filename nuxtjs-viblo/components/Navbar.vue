@@ -170,6 +170,7 @@ export default {
             path: "~/assets/images/email.svg",
             name: "Email",
             type: 1,
+            type_name:"Email",
             title: "Email",
             subtitle: "",
             description:
@@ -177,6 +178,7 @@ export default {
             required: false,
             property: {},
             is_create: true,
+            value:""
           };
           break;
         case 2:

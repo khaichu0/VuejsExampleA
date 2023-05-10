@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyApiNetCore6.Data;
 using MyApiNetCore6.Repositories;
+using MyApiNetCore6.Repositories.FormRepo;
 using Swashbuckle.Swagger;
 using System.Reflection;
 using System.Text;
@@ -57,6 +58,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 // Life cycle DI: AddSingleton(), AddTransient(), AddScoped()
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IFormRepository, FormRepository>();
+
 
 builder.Services.AddAuthentication(options => { 
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -85,6 +88,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(options => options.AllowAnyOrigin());
 app.UseAuthentication();
 app.UseAuthorization();
 
